@@ -1,0 +1,5 @@
+kod her 5 saniye içerisinde masaüstüdne bulunan pencerileri kontrol edicek.
+eğerki valorant uygulaması açıksa masaüstünde bulunan  gizli klasör içindeki tüm image dosyaları sırası ile açılır 
+toplam 6 saniye boyunca bu devam edicek. hala açıksa kapatır.
+tüm bu işlemler bu klasörün içinde bulunan is_it_allow.json dosyası içinde {"key":"evet"} evet yada hayır yazmasıdır.
+
