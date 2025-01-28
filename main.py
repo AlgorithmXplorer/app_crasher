@@ -23,20 +23,16 @@ def main(repo_folder:str):
         with open(new_path,"w",encoding="utf-8") as file:
             json.dump(datas,file,indent=4,sort_keys=False)
         allow = datas["key"].lower()
-        if allow == "evet":
+        if allow == "yes":
             return True
         else:
             return False
             
         
-    print(json_reader(repo_folder))
-
+    allow = json_reader(repo_folder)
+    if allow:
+        inner(repo_folder)
 
 main(path)
-
-
-def controller():
-    pass
-
 
 
