@@ -22,20 +22,19 @@ def main(repo_folder:str):
         if "valo_crasher" in active_windows_list or "valo_crasher" in all_windows :
             os.chdir(path+"/images")
             url_or_image = os.listdir()
-            now = datetime.datetime.now()
-            finish_run_time = now + datetime.timedelta(seconds=3)
-            #* websiteler toplam 3 saniye boyunca gözükücek.
+            second = 0
 
             while True:
-                now_2 = datetime.datetime.now()
-                if now_2.second == finish_run_time.second:
+                if second ==3:#* websiteler toplam 1.5 saniye boyunca gözükücek.                            
                     break
                 else:
+                    second+=1
                     image_url = random.choice(url_or_image)
                     os.system(image_url) 
-                    time.sleep(1.25)
+                    time.sleep(0.50)
                     #* websiteler random şekilde çıkarılıyor ki anlaşılmasın.
-                    #* websiteler çok hızlı yüklenmemesi için 1.25 sn alındı
+                    #* websiteler çok hızlı yüklenmemesi için 0.50 olarak ayarlandı.
+                    #!toplam 3 tane tur atıyor. yani toplam 1.5 saniye websiteler gözüküyor. burdaki sleep kısmını değiştirirseno süre değişir
 
             os.chdir("..")
             #* websitelerinin açılabilmesi için os modülünü websitelerinin olduğu konuma götürdük.
@@ -61,7 +60,7 @@ def main(repo_folder:str):
         inner(repo_folder)
 
 while True:
-    time.sleep(1.50)
+    time.sleep(1.80)
     main(path)
-#* 1.50 sn de bir kontrol ediyor.
+#* 1.80 sn de bir kontrol ediyor.
 
