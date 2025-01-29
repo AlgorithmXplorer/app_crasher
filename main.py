@@ -8,9 +8,10 @@ path = "c:/Users/VICTUS/Masaüstü/abcd"
 
 def main(repo_folder:str):
     def inner(path):
-        windows = pygetwindow.getActiveWindowTitle()
-        windows = windows.split(" - ")
-        if "valo_crasher" in windows:
+        windows_1 = pygetwindow.getActiveWindowTitle()
+        windows_1_1 = windows_1.split(" - ")
+        windows_2 = pygetwindow.getAllTitles()
+        if "valo_crasher" in windows_1_1 or "valo_crasher" in windows_2 :
             os.chdir(path+"/images")
             url_or_image = os.listdir()
             for image_url in url_or_image:
