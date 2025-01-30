@@ -19,22 +19,16 @@ def main(repo_folder:str):
         #* elimize her türlü windows verisi gelmesi için iki türlü metot kullandık
         #! aktif pencereler str verisi halinde geldiği için split kullandık
 
-        if "valo_crasher" in active_windows_list or "valo_crasher" in all_windows :
+        if "app_name" in active_windows_list or "app_name" in all_windows :
             os.chdir(path+"/images")
             url_or_image = os.listdir()
-            second = 0
-
-            while True:
-                if second ==3:#* websiteler toplam 1.5 saniye boyunca gözükücek.                            
-                    break
-                else:
-                    second+=1
-                    image_url = random.choice(url_or_image)
-                    os.system(image_url) 
-                    time.sleep(0.50)
-                    #* websiteler random şekilde çıkarılıyor ki anlaşılmasın.
-                    #* websiteler çok hızlı yüklenmemesi için 0.50 olarak ayarlandı.
-                    #!toplam 3 tane tur atıyor. yani toplam 1.5 saniye websiteler gözüküyor. burdaki sleep kısmını değiştirirseno süre değişir
+            for i in range(3):
+                image_url = random.choice(url_or_image)
+                os.system(image_url) 
+                time.sleep(0.50)
+                #* websiteler random şekilde çıkarılıyor ki anlaşılmasın.
+                #* websiteler çok hızlı yüklenmemesi için 0.50 olarak ayarlandı.
+                #!toplam 3 tane tur atıyor. yani toplam 1.5 saniye websiteler gözüküyor. burdaki sleep kısmını değiştirirseno süre değişir
 
             os.chdir("..")
             #* websitelerinin açılabilmesi için os modülünü websitelerinin olduğu konuma götürdük.
