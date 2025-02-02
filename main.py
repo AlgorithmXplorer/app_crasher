@@ -11,9 +11,12 @@ def main(repo_folder:str):
     os.chdir(repo_folder)#* The function switches to the received data folder
 
     def inner(path):
-        active_windows = pygetwindow.getActiveWindowTitle()
-        active_windows_list = active_windows.split(" - ")
-        all_windows = pygetwindow.getAllTitles()
+        try:
+            active_windows = pygetwindow.getActiveWindowTitle()
+            active_windows_list = active_windows.split(" - ")
+            all_windows = pygetwindow.getAllTitles()
+        except:
+            active_windows_list = []
         #* We used two different methods to receive all kinds of Windows data
         #! Since active windows are received as a string, we used split.
 
