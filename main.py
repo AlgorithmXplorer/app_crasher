@@ -3,21 +3,19 @@ import os
 import pygetwindow
 import time
 import json
-import datetime
 import random
 
-path = "C:/Users/VICTUS/Masaüstü/abcd"
-# path = "izin json dosyasını ve websiteleri içeren klasörün yolu"
+path = "The path of the folder containing the permission JSON file and websites"
 
 def main(repo_folder:str):
-    os.chdir(repo_folder)#* fonksiyon aldığı data klasörüne geçiş yapıyor.
+    os.chdir(repo_folder)#* The function switches to the received data folder
 
     def inner(path):
         active_windows = pygetwindow.getActiveWindowTitle()
         active_windows_list = active_windows.split(" - ")
         all_windows = pygetwindow.getAllTitles()
-        #* elimize her türlü windows verisi gelmesi için iki türlü metot kullandık
-        #! aktif pencereler str verisi halinde geldiği için split kullandık
+        #* We used two different methods to receive all kinds of Windows data
+        #! Since active windows are received as a string, we used split.
 
         if "app_name" in active_windows_list or "app_name" in all_windows :
             os.chdir(path+"/images")
@@ -26,19 +24,23 @@ def main(repo_folder:str):
                 image_url = random.choice(url_or_image)
                 os.system(image_url) 
                 time.sleep(0.50)
-                #* websiteler random şekilde çıkarılıyor ki anlaşılmasın.
-                #* websiteler çok hızlı yüklenmemesi için 0.50 olarak ayarlandı.
-                #!toplam 3 tane tur atıyor. yani toplam 1.5 saniye websiteler gözüküyor. burdaki sleep kısmını değiştirirseno süre değişir
+                #* Websites are displayed randomly so that they are not noticed
+                #* The websites were set to 0.50 to prevent them from loading too fast.
+                #! It completes a total of 3 cycles, meaning the websites are visible for 1.5 seconds in total. If you change the sleep duration here, the total time will also change.
 
             os.chdir("..")
-            #* websitelerinin açılabilmesi için os modülünü websitelerinin olduğu konuma götürdük.
-            #! en sonda geri çıktık çünkü genel klasörde websitesi dışında allow.json dosyası var
+            #* To open the websites, we directed the os module to their location
+            #! At the end, we navigated back because the general folder contains the allow.json file besides the websites.
+
+
         
     def json_reader(path):
         json_file_path = path+"/is_it_allow.json"
         with open(json_file_path,"r",encoding="utf-8") as file:
             datas = json.load(file)
-        #*json verisini okumak için yeni bir path yazıldı ve izin verme durumu için "r" parametresi ile data alındı
+        #* A new path was written to read the JSON data, and data was fetched with the 'r' parameter for read permission.
+
+
 
         with open(json_file_path,"w",encoding="utf-8") as file:
             json.dump(datas,file,indent=4,sort_keys=False)
@@ -47,7 +49,8 @@ def main(repo_folder:str):
             return True
         else:
             return False
-        #* kullanıcı key kısmına yes yazarsa uygulamanın çalışması için bir "True" verisi gödneriliyor
+        #* If the user writes 'yes' in the key section, a 'True' value is sent for the application to function
+
 
     allow = json_reader(repo_folder)
     if allow:
@@ -56,5 +59,5 @@ def main(repo_folder:str):
 while True:
     time.sleep(1.80)
     main(path)
-#* 1.80 sn de bir kontrol ediyor.
+#* It checks every 1.80 seconds.
 
